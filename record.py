@@ -10,9 +10,11 @@ CHUNK_SIZE = 1024
 FORMAT = pyaudio.paInt16
 RATE = 44100
 
+
 def is_silent(snd_data):
     "Returns 'True' if below the 'silent' threshold"
     return max(snd_data) < THRESHOLD
+
 
 def normalize(snd_data):
     "Average the volume out"
@@ -24,6 +26,7 @@ def normalize(snd_data):
         r.append(int(i*times))
     return r
 
+
 def trim(snd_data):
     "Trim the blank spots at the start and end"
     def _trim(snd_data):
@@ -31,7 +34,7 @@ def trim(snd_data):
         r = array('h')
 
         for i in snd_data:
-            if not snd_started and abs(i)>THRESHOLD:
+            if not snd_started and abs(i) > THRESHOLD:
                 snd_started = True
                 r.append(i)
 
@@ -48,12 +51,14 @@ def trim(snd_data):
     snd_data.reverse()
     return snd_data
 
+
 def add_silence(snd_data, seconds):
     "Add silence to the start and end of 'snd_data' of length 'seconds' (float)"
-    r = array('h', [0 for i in xrange(int(seconds*RATE))])
+    r = array('h', [0 for i in range(int(seconds*RATE))])
     r.extend(snd_data)
-    r.extend([0 for i in xrange(int(seconds*RATE))])
+    r.extend([0 for i in range(int(seconds*RATE))])
     return r
+
 
 def record():
     """
@@ -67,8 +72,8 @@ def record():
     """
     p = pyaudio.PyAudio()
     stream = p.open(format=FORMAT, channels=1, rate=RATE,
-        input=True,
-        frames_per_buffer=CHUNK_SIZE)
+                    input=True,
+                    frames_per_buffer=CHUNK_SIZE)
 
     num_silent = 0
     snd_started = False
@@ -101,6 +106,7 @@ def record():
     r = trim(r)
     return sample_width, r
 
+
 def record_to_file(path):
     "Records from the microphone and outputs the resulting data to 'path'"
     sample_width, data = record()
@@ -112,6 +118,7 @@ def record_to_file(path):
     wf.setframerate(RATE)
     wf.writeframes(data)
     wf.close()
+
 
 if __name__ == '__main__':
     print("please speak a word into the microphone")
