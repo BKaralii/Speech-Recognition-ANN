@@ -44,11 +44,13 @@ t5 = np.array([[0,0,0,0,1,0] for _ in range(len(inputArray5))]) #New_Word
 target = np.concatenate([t1,t2,t3,t4,t5])
 ```
 
-if
- don't use training voice recording button then run anntrainer.py. This could take a lot of time to compute. Grab a coffee while you wait =)
-else 
- You can start drinking coffee immediately after recording the voice training (:
+<dl>
+    <dt>if</dt>
+    <dd>don't use training voice recording button then run anntrainer.py. <br/>This could take a lot of time to compute. Grab a coffee while you wait =)</dd>
+    <dt>else</dt>
+    <dd>You can start drinking coffee immediately after recording the voice training (:</dd>
+</dl>
 
-#Running the speech recognizer
-Just run main.py! =)
+#Running the speech recognizer  </br>
+Just run main.py! =)  </br>
 
