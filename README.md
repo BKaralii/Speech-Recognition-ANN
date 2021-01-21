@@ -9,17 +9,20 @@ You need numpy and scipy for this to work.
 
 Words Recognized: "Down", "Eat", "Sleep", "Up"
 
-
 #How to add new words
----------------------------------------------------------------------------------- optional 1 -------------------------------------------------------------------------------
+
+Optional 1 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 1. Record your new word in Audacity or any audio processing software. Set the sampling rate to 44100Hz then export into a .wav file. It would be better to record a lot of samples from different speakers to improve accuracy.
 
 2. Put the wav files into the training_sets directory. Rename your wav files to the word you want to add + -sample_index (ex: hello-1.wav,hello-2.wav). In this way, the feature extractor later can iterate within the files easily.
----------------------------------------------------------------------------------- optional 2 --------------------------------------------------------------------------------
+
+Optional 2
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
 1. You can record the sounds sequentially by pressing the training voice recording button.
 
 2. You can start saying the words with commands that will appear on the console.
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 3. In the featureExtractor.py, append your new word to the words array.
 
